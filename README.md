@@ -3,3 +3,4 @@
 #### Functions :
 - Factorial
 - Dichotomy
+- GCD
