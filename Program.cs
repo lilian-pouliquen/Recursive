@@ -10,23 +10,47 @@ namespace Recursives
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Fonctions.Factorielle(3));
+            double fact;
+            bool continuer = true;
+            int i = 0;
 
-            int[] tbl = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            int pos = Fonctions.Dichotomie(10, tbl);
+            while(continuer)
+            {
+                fact = Fonctions.Factorielle(i);
+                Console.WriteLine(i + "! = " + fact);
+                
+                continuer = (i < 171);
+               
+                i++;
+            }
 
-            if ( pos == -1)
+
+
+            Console.WriteLine("\n");
+
+
+
+            int[] tbl = {0, 1, 2, 3, 4, 6, 7, 8, 9, 10 };
+            int[] test = { -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+            foreach(int e in test)
             {
-                Console.WriteLine("Pas trouvé");
+                Console.WriteLine(e + " --> " + Fonctions.Dichotomie(0, tbl.Length - 1, e, tbl));
             }
-            else
-            {
-                Console.WriteLine(pos);
-            }
+
+
+
+            Console.WriteLine("\n");
+
+
+
+            int a = 37;
+            int b = 13;
+
+            Console.WriteLine("PGCD entre " + a + " et " + b + " = " + Fonctions.PGCD(a, b));
 
 
             Console.ReadLine();
 
         }
-    }
+    } 
 }

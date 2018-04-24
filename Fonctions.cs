@@ -8,9 +8,9 @@ namespace Recursives
 {
     public class Fonctions
     {
-        public static int Factorielle(int n)
+        public static double Factorielle(int n)
         {
-            if(n == 1)
+            if (n <= 1)
             {
                 return 1;
             }
@@ -20,24 +20,51 @@ namespace Recursives
             }
         }
 
-        public static int Dichotomie(int recherche, int[] tbl)
+        public static int Dichotomie(int inf, int sup, int recherche, int[] tbl)
         {
-            int inf = 0;
-            int sup = tbl.Length - 1;
-            int m = (int)((inf + sup) / 2);
+            int m = (inf + sup) / 2;
 
-            while (m != -1 && tbl[m] != recherche )
+            if (tbl[m] == recherche)
             {
-                if (tbl[m] < recherche) { inf = m; }
-                else { sup = m; }
-                
-                if((int)((inf + sup) / 2) == m) { m = -1; }
-                else { m = (int)((inf + sup) / 2); }
+                return m;
             }
-            
-            return m;
+            else
+            {
+                if (tbl[m] < recherche) { inf = m + 1; }
+                else
+                {
+                    if (tbl[m] > recherche) { sup = m - 1; }
+                }
+
+                if (sup < inf)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return Dichotomie(inf, sup, recherche, tbl);
+                }
+            }
         }
 
+        public static int PGCD(int a, int b)
+        {
+            if (a == b)
+            {
+                return a;
+            }
+            else
+            {
+                if(a > b)
+                {
+                    return PGCD(a - b, b);
+                }
+                else
+                {
+                    return PGCD(a, b-a);
+                }
+            }
+        }
 
     }
 
@@ -45,7 +72,7 @@ namespace Recursives
 
 
 
-    
+
 
 
 }
